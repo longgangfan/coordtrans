@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>WGS-84 to CGCS2000 Converter</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
+    <script src="converter.js"></script>
+  </head>
+
+  <body>
+    <div class="contanier">
+      <h1>WGS-84 to CGCS2000 Converter</h1>
+      <form class="form-grid">
+        <div id="wgs84" class="form-group">
+          <label>Enter WGS-84 coordinates:</label>
+          <textarea
+            id="wgsCoords"
+            rows="35"
+            placeholder="Enter coordinates in  longitude, latitude,format"
+          ></textarea>
+        </div>
+        <div id="checkbox">
+          <label>
+            <input type="checkbox" id="wgs2cgcs_ck" onchange="shadow_cgcs()"/>WGS84 &#8594 CGCS2000
+          </label>
+          <label>
+            <input type="checkbox" id="cgcs2wgs_ck" onchange="shadow_wgs()"/>WGS84 &#8592 CGCS2000
+          </label>
+        </div>
+
+        <div id="convert" class="convert">
+          <button type="button" onclick="convert()">Convert &#8594</button>
+          <button type="button" onclick="inconvert()">Convert &#8592</button>
+        </div>
+        <div id="cgcs2000select" class="form-group">
+          <label>Select CGCS2000 coordinate system:</label>
+          <select id="cgcsSystem">
+            <option value="NULL">Please choose</option>
+            <option value="EPSG:4534">3 Degree Gauss-Kruger Zone 25</option>
+            <option value="EPSG:4535">3 Degree Gauss-Kruger Zone 26</option>
+            <option value="EPSG:4536">3 Degree Gauss-Kruger Zone 27</option>
+            <option value="EPSG:4537">3 Degree Gauss-Kruger Zone 28</option>
+            <option value="EPSG:4538">3 Degree Gauss-Kruger Zone 29</option>
+            <option value="EPSG:4539">3 Degree Gauss-Kruger Zone 30</option>
+            <option value="EPSG:4540">3 Degree Gauss-Kruger Zone 31</option>
+            <option value="EPSG:4541">3 Degree Gauss-Kruger Zone 32</option>
+            <option value="EPSG:4542">3 Degree Gauss-Kruger Zone 33</option>
+            <option value="EPSG:4543">3 Degree Gauss-Kruger Zone 34</option>
+            <option value="EPSG:4544">3 Degree Gauss-Kruger Zone 35</option>
+            <option value="EPSG:4545">3 Degree Gauss-Kruger Zone 36</option>
+            <option value="EPSG:4546">3 Degree Gauss-Kruger Zone 37</option>
+            <option value="EPSG:4547">3 Degree Gauss-Kruger Zone 38</option>
+            <option value="EPSG:4548">3 Degree Gauss-Kruger Zone 39</option>
+            <option value="EPSG:4549">3 Degree Gauss-Kruger Zone 40</option>
+            <option value="EPSG:4550">3 Degree Gauss-Kruger Zone 41</option>
+            <option value="EPSG:4551">3 Degree Gauss-Kruger Zone 42</option>
+            <option value="EPSG:4552">3 Degree Gauss-Kruger Zone 43</option>
+            <option value="EPSG:4553">3 Degree Gauss-Kruger Zone 44</option>
+            <option value="EPSG:4554">3 Degree Gauss-Kruger Zone 45</option>
+          </select>
+        </div>
+        <div id="cgcs2000" class="form-group">
+          <label>CGCS2000 coordinates:</label>
+          <textarea id="cgcsCoords" rows="30"></textarea>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

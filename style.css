@@ -1,0 +1,100 @@
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 5% 40% 10% 40% 5%;
+  grid-template-rows: 8% 46% 46%;
+  grid-gap: 5px;
+  align-items: center;
+  grid-template-areas:
+    ". wgs84 . cgcs2000select ."
+    ". wgs84 checkbox cgcs2000 ."
+    ". wgs84 convert cgcs2000 .";
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  background-color: #eee;
+}
+
+.convert {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  align-items: stretch;
+}
+#wgs84 {
+  grid-area: wgs84;
+}
+#cgcs2000 {
+  grid-area: cgcs2000;
+}
+#cgcs2000select {
+  grid-area: cgcs2000select;
+}
+#convert {
+  grid-area: convert;
+}
+#checkbox {
+  grid-area: checkbox;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+button[type="button"] {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+button[type="button"]:hover {
+  background-color: #3e8e41;
+}
+checkbox[type="checkbox"] {
+  width: 60px;
+  height: 10px;
+}
+
+input {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  top: 0px;
+}
