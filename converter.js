@@ -231,6 +231,7 @@ function shadow_cgcs() {
     textarea.style.backgroundColor = "gray";
     textarea.placeholder = "Output Easting, Northing";
     textarea2.readOnly = false;
+    textarea2.style.backgroundColor = "#eee";
     textarea2.placeholder = "Enter coordinates in  longitude, latitude,format";
     ckbk2.checked = false;
     cgcsselect.disabled = true;
@@ -238,11 +239,10 @@ function shadow_cgcs() {
     bt1.style.backgroundColor = "#4caf50";
     bt2.disabled = true;
     bt2.style.backgroundColor = "gray";
-    shadow_wgs();
   } else {
-    textarea.readOnly = false;
+    textarea.readOnly = true;
     textarea.style.backgroundColor = "#eee";
-    cgcsselect.disabled = false;
+    cgcsselect.disabled = true;
     bt1.disabled = true;
     bt1.style.backgroundColor = "gray";
   }
@@ -255,25 +255,28 @@ function shadow_wgs() {
   var cgcsselect = document.getElementById("cgcsSystem");
   var bt1 = document.getElementById("cgcs2wgs_bt");
   var bt2 = document.getElementById("wgs2cgcs_bt");
+  var cgcsselect = document.getElementById("cgcsSystem");
   if (ckbx.checked == true) {
     textarea.readOnly = true;
     textarea.style.backgroundColor = "gray";
     textarea.placeholder = "Output long, lat";
     textarea2.readOnly = false;
     textarea2.placeholder = "Enter coordinates in  Easting, Northing,format";
+    textarea2.style.backgroundColor = "#eee";
     ckbk2.checked = false;
     cgcsselect.disabled = false;
     bt1.disabled = false;
     bt1.style.backgroundColor = "#4caf50";
     bt2.disabled = true;
     bt2.style.backgroundColor = "gray";
-    shadow_cgcs();
+    cgcsselect.value = "NULL";
   } else {
-    textarea.readOnly = false;
+    textarea.readOnly = true;
     textarea.style.backgroundColor = "#eee";
     cgcsselect.disabled = true;
     bt1.disabled = true;
     bt1.style.backgroundColor = "gray";
+    cgcsselect.value = "NULL";
   }
 }
 
