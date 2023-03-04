@@ -17,7 +17,6 @@
           <textarea
             id="wgsCoords"
             rows="35"
-            placeholder="Enter coordinates in  longitude, latitude,format"
           ></textarea>
         </div>
         <div id="checkbox">
@@ -30,8 +29,9 @@
         </div>
 
         <div id="convert" class="convert">
-          <button type="button" onclick="convert()">Convert &#8594</button>
-          <button type="button" onclick="inconvert()">Convert &#8592</button>
+          <button type="button" id="wgs2cgcs_bt" onclick="convert()">Convert &#8594</button>
+          <button type="button" id="cgcs2wgs_bt" onclick="inconvert()">Convert &#8592</button>
+          <button type="button" id="clear_bt" onclick="cleartext()">Clear All</button>
         </div>
         <div id="cgcs2000select" class="form-group">
           <label>Select CGCS2000 coordinate system:</label>
