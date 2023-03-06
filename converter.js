@@ -1,5 +1,5 @@
 // shadow the itesm when the page is loaded
-window.onload = function () {
+window.onload = function loadpage() {
   shadow_wgs();
   shadow_cgcs();
 };
@@ -215,7 +215,7 @@ function inconvert() {
         return null;
       }
       var result = proj4(cgcs, wgs84, [east, north]);
-      return [result[0].toFixed(4), result[1].toFixed(4)];
+      return [result[0].toFixed(6), result[1].toFixed(6)];
     })
     .filter((coords) => coords !== null)
     .map((coords) => coords.join(", "));
