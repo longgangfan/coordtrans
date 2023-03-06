@@ -12,6 +12,18 @@
     <div class="contanier">
       <h1>WGS-84 to CGCS2000 Converter</h1>
       <form class="form-grid">
+        <div id="formatbox">
+          <label>Choose seperator:</label>
+          <select id="seperator">
+            <option value=",">Commas (,)</option>
+            <option value=" ">Spaces (" ")</option>
+            <option value=";">Semicolon(;)</option>
+          </select>
+          <label>
+            <input type="checkbox" id="exchangecol"/>Exchange Columns?
+          </label>
+            <button type="button" id="format_bt" onclick="formatinput()">Format</button>
+          </div>
         <div id="wgs84" class="form-group">
           <label>Enter WGS-84 coordinates:</label>
           <textarea

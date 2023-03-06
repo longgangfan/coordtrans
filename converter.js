@@ -182,7 +182,8 @@ function convert() {
       cgcsselect.readOnly = true;
       cgcsselect.value = cgcsSystem;
       var cgcs = proj4.defs(cgcsSystem);
-      return proj4(wgs84, cgcs, [lng, lat]);
+      result = proj4(wgs84, cgcs, [lng, lat]);
+      return [result[0].toFixed(4), result[1].toFixed(4)];
     })
     .filter((coords) => coords !== null)
     .map((coords) => coords.join(", "));
@@ -205,7 +206,7 @@ function inconvert() {
   var wgs84 = proj4.defs("EPSG:4326");
   var cgcs = proj4.defs(cgcsSystem);
 
-  // Convert WGS-84 to CGCS2000
+  // Convert CGCS2000 to WGS-84
   var wgsCoords = cgcsCoords
     .map((coords) => {
       var east = parseFloat(coords[0]);
@@ -213,7 +214,8 @@ function inconvert() {
       if (isNaN(east) || !isFinite(east) || isNaN(north) || !isFinite(north)) {
         return null;
       }
-      return proj4(cgcs, wgs84, [east, north]);
+      var result = proj4(cgcs, wgs84, [east, north]);
+      return [result[0].toFixed(4), result[1].toFixed(4)];
     })
     .filter((coords) => coords !== null)
     .map((coords) => coords.join(", "));
@@ -292,4 +294,38 @@ function cleartext() {
   var textarea2 = document.getElementById("cgcsCoords");
   textarea.value = "";
   textarea2.value = "";
+}
+
+function formatinput() {
+  // Get input values
+  var ckbx = document.getElementById("cgcs2wgs_ck");
+  var ckbk2 = document.getElementById("wgs2cgcs_ck");
+  if (ckbx.checked == true && ckbk2.checked == false) {
+    var inputbox = "cgcsCoords";
+  }
+  if (ckbx.checked == false && ckbk2.checked == true) {
+    var inputbox = "wgsCoords";
+  }
+
+  var inputextall = document
+    .getElementById(inputbox)
+    .value.trim()
+    .split("\n")
+    .map((line) => line.trim().split(","));
+  // Define input and output coordinate systems
+
+  // Convert WGS-84 to CGCS2000
+  var formatedtext = inputextall
+    .map((coords) => {
+      var east = parseFloat(coords[0]);
+      var north = parseFloat(coords[1]);
+      if (isNaN(east) || !isFinite(east) || isNaN(north) || !isFinite(north)) {
+        return null;
+      }
+      return [east, north];
+    })
+    .filter((coords) => coords !== null)
+    .map((coords) => coords.join(", "));
+  // Set output values
+  document.getElementById(inputbox).value = formatedtext.join("\n");
 }

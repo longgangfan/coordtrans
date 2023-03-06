@@ -13,12 +13,13 @@ h1 {
 .form-grid {
   display: grid;
   grid-template-columns: 5% 40% 10% 40% 5%;
-  grid-template-rows: 8% 46% 46%;
+  grid-template-rows: 8% 25% 25% 42%;
   grid-gap: 5px;
   align-items: center;
   grid-template-areas:
     ". wgs84 . cgcs2000select ."
     ". wgs84 checkbox cgcs2000 ."
+    ". wgs84 format cgcs2000 ."
     ". wgs84 convert cgcs2000 .";
 }
 
@@ -38,7 +39,7 @@ h1 {
 .form-group textarea {
   padding: 10px;
   border-radius: 5px;
-  border: none;
+  border: 1px;
   font-size: 16px;
   background-color: #eee;
 }
@@ -67,6 +68,15 @@ h1 {
   flex-direction: column;
   font-size: 0.7vw;
   font-weight: bold;
+}
+#formatbox {
+  grid-area: format;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7vw;
+  font-weight: bold; 
+  background-color: #eee;
+  align-items: stretch;
 }
 button[type="button"] {
   background-color: #4caf50;
@@ -98,4 +108,13 @@ input {
   margin-bottom: 10px;
   position: relative;
   top: 0px;
+}
+
+select {
+  padding: 8px;
+  margin-left:0.2vw;
+  margin-right:0.2vw;
+  border-radius: 5px;
+  border: 2px;
+  font-size: 0.7vw;
 }
