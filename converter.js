@@ -175,6 +175,9 @@ function convert() {
         case 45:
           cgcsSystem = "EPSG:4554";
           break;
+        default:
+          cgcsSystem = "NULL";
+          window.alert("The data is out of the range of CGCS2000");
       }
       cgcsselect.readOnly = true;
       cgcsselect.value = cgcsSystem;
