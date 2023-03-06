@@ -65,7 +65,7 @@ h1 {
   grid-area: checkbox;
   display: flex;
   flex-direction: column;
-  font-size: 0.8rem;
+  font-size: 0.7vw;
   font-weight: bold;
 }
 button[type="button"] {

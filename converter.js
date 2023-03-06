@@ -241,7 +241,9 @@ function shadow_cgcs() {
     bt2.style.backgroundColor = "gray";
   } else {
     textarea.readOnly = true;
-    textarea.style.backgroundColor = "#eee";
+    textarea2.readOnly = true;
+    textarea.style.backgroundColor = "gray";
+    textarea2.style.backgroundColor = "gray";
     cgcsselect.disabled = true;
     bt1.disabled = true;
     bt1.style.backgroundColor = "gray";
@@ -272,7 +274,9 @@ function shadow_wgs() {
     cgcsselect.value = "NULL";
   } else {
     textarea.readOnly = true;
-    textarea.style.backgroundColor = "#eee";
+    textarea2.readOnly = true;
+    textarea.style.backgroundColor = "gray";
+    textarea2.style.backgroundColor = "gray";
     cgcsselect.disabled = true;
     bt1.disabled = true;
     bt1.style.backgroundColor = "gray";
