@@ -12,16 +12,17 @@ h1 {
 
 .form-grid {
   display: grid;
-  grid-template-columns:  38% 20% 38%;
-  grid-template-rows: 8% 25% 25% 42%;
-  grid-column-gap: 3%;
+  grid-template-columns:  1fr 15% 1fr;
+  grid-template-rows: 8% 20% 20% 24% 1fr;
+  grid-column-gap: 5%;
   grid-row-gap: 2%;
-  align-items: center;
+  align-items: flex-start;
   grid-template-areas:
-    "wgs84 checkbox cgcs2000select"
+    "wgs84 . cgcs2000select"
     "wgs84 checkbox cgcs2000"
     "wgs84 format cgcs2000"
-    "wgs84 convert cgcs2000";
+    "wgs84 convert cgcs2000"
+    "footer footer footer";
   padding-left: 5%;
   padding-right: 5%;
 }
@@ -50,10 +51,10 @@ h1 {
 .convert {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  align-items: stretch;
+  align-items: flex-start;
   padding-left: 10px;
   padding-right: 10px;
+  border-radius: 5px;
 }
 #wgs84 {
   grid-area: wgs84;
@@ -67,6 +68,12 @@ h1 {
 #convert {
   grid-area: convert;
   background-color: #eee;
+  align-items: stretch;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
 }
 #checkbox {
   grid-area: checkbox;
@@ -80,6 +87,7 @@ h1 {
   padding-right: 10px;
   padding-top: 20px;
   padding-bottom: 10px;
+  border-radius: 5px;
 }
 #formatbox {
   grid-area: format;
@@ -87,21 +95,22 @@ h1 {
   flex-direction: column;
   font-size: 1vw;
   font-weight: bold;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
   background-color: #eee;
+  border-radius: 5px;
 }
 button[type="button"] {
   background-color: #4caf50;
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
   font-size: 12px;
   cursor: pointer;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-left: 5px;
   margin-right: 5px;
 }

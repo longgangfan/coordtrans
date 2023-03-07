@@ -1,8 +1,8 @@
 // shadow the itesm when the page is loaded
-window.onload = function loadpage() {
+document.addEventListener('DOMContentLoaded', function() {
   shadow_wgs();
   shadow_cgcs();
-};
+});
 // Define WGS-84 and CGCS2000 coordinate systems
 proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
 proj4.defs(
@@ -233,25 +233,17 @@ function shadow_cgcs() {
   var bt2 = document.getElementById("cgcs2wgs_bt");
   if (ckbx.checked == true) {
     textarea.readOnly = true;
-    textarea.style.backgroundColor = "gray";
+    textarea.style.backgroundColor = "#eee";
     textarea.placeholder = "Output Easting, Northing";
     textarea2.readOnly = false;
-    textarea2.style.backgroundColor = "#eee";
+    textarea2.style.backgroundColor = "#eef";
     textarea2.placeholder = "Enter coordinates in  longitude, latitude,format";
     ckbk2.checked = false;
     cgcsselect.disabled = true;
     bt1.disabled = false;
     bt1.style.backgroundColor = "#4caf50";
     bt2.disabled = true;
-    bt2.style.backgroundColor = "gray";
-  } else {
-    textarea.readOnly = true;
-    textarea2.readOnly = true;
-    textarea.style.backgroundColor = "gray";
-    textarea2.style.backgroundColor = "gray";
-    cgcsselect.disabled = true;
-    bt1.disabled = true;
-    bt1.style.backgroundColor = "gray";
+    bt2.style.backgroundColor = "#eee";
   }
 }
 function shadow_wgs() {
@@ -265,26 +257,17 @@ function shadow_wgs() {
   var cgcsselect = document.getElementById("cgcsSystem");
   if (ckbx.checked == true) {
     textarea.readOnly = true;
-    textarea.style.backgroundColor = "gray";
+    textarea.style.backgroundColor = "#eee";
     textarea.placeholder = "Output long, lat";
     textarea2.readOnly = false;
     textarea2.placeholder = "Enter coordinates in  Easting, Northing,format";
-    textarea2.style.backgroundColor = "#eee";
+    textarea2.style.backgroundColor = "#eef";
     ckbk2.checked = false;
     cgcsselect.disabled = false;
     bt1.disabled = false;
     bt1.style.backgroundColor = "#4caf50";
     bt2.disabled = true;
-    bt2.style.backgroundColor = "gray";
-    cgcsselect.value = "NULL";
-  } else {
-    textarea.readOnly = true;
-    textarea2.readOnly = true;
-    textarea.style.backgroundColor = "gray";
-    textarea2.style.backgroundColor = "gray";
-    cgcsselect.disabled = true;
-    bt1.disabled = true;
-    bt1.style.backgroundColor = "gray";
+    bt2.style.backgroundColor = "#eee";
     cgcsselect.value = "NULL";
   }
 }

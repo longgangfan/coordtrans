@@ -26,15 +26,12 @@
           </div>
         <div id="wgs84" class="form-group">
           <label>Enter WGS-84 coordinates:</label>
-          <textarea
-            id="wgsCoords"
-            rows="35"
-          ></textarea>
+          <textarea id="wgsCoords" rows="34" readonly></textarea>
         </div>
         <div id="checkbox">
           <label>Select Your Operation:</label>
           <label>
-            <input type="checkbox" id="wgs2cgcs_ck" onchange="shadow_cgcs()"/>WGS84 &#8594 CGCS2000
+            <input type="checkbox" id="wgs2cgcs_ck"  onchange="shadow_cgcs()"/>WGS84 &#8594 CGCS2000
           </label>
           <label>
             <input type="checkbox" id="cgcs2wgs_ck" onchange="shadow_wgs()"/>WGS84 &#8592 CGCS2000
@@ -75,7 +72,7 @@
         </div>
         <div id="cgcs2000" class="form-group">
           <label>CGCS2000 coordinates:</label>
-          <textarea id="cgcsCoords" rows="30"></textarea>
+          <textarea id="cgcsCoords" rows="28" readonly></textarea>
         </div>
       </form>
     </div>
