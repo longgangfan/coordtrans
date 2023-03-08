@@ -1,7 +1,17 @@
 // shadow the itesm when the page is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  shadow_wgs();
-  shadow_cgcs();
+document.addEventListener("DOMContentLoaded", function () {
+  var ckbx = document.getElementById("wgs2cgcs_ck");
+  var ckbx2 = document.getElementById("cgcs2wgs_ck");
+  if (ckbx.checked) {
+    shadow_cgcs();
+  }
+  if (ckbx2.checked) {
+    shadow_wgs();
+  }
+  if (!ckbx.ckecked && !ckbx2.checked) {
+    shadow_wgs();
+    shadow_cgcs();
+  }
 });
 // Define WGS-84 and CGCS2000 coordinate systems
 proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
@@ -183,7 +193,7 @@ function convert() {
       cgcsselect.value = cgcsSystem;
       var cgcs = proj4.defs(cgcsSystem);
       result = proj4(wgs84, cgcs, [lng, lat]);
-      return [result[0].toFixed(4), result[1].toFixed(4)];
+      return [result[0].toFixed(6), result[1].toFixed(6), NN, NN*3];
     })
     .filter((coords) => coords !== null)
     .map((coords) => coords.join(", "));
@@ -228,7 +238,7 @@ function shadow_cgcs() {
   var textarea = document.getElementById("cgcsCoords");
   var textarea2 = document.getElementById("wgsCoords");
   var cgcsselect = document.getElementById("cgcsSystem");
-  var ckbk2 = document.getElementById("cgcs2wgs_ck");
+  var ckbx2 = document.getElementById("cgcs2wgs_ck");
   var bt1 = document.getElementById("wgs2cgcs_bt");
   var bt2 = document.getElementById("cgcs2wgs_bt");
   if (ckbx.checked == true) {
@@ -238,19 +248,29 @@ function shadow_cgcs() {
     textarea2.readOnly = false;
     textarea2.style.backgroundColor = "#eef";
     textarea2.placeholder = "Enter coordinates in  longitude, latitude,format";
-    ckbk2.checked = false;
+    ckbx2.checked = false;
     cgcsselect.disabled = true;
     bt1.disabled = false;
     bt1.style.backgroundColor = "#4caf50";
     bt2.disabled = true;
     bt2.style.backgroundColor = "#eee";
+  } else {
+    textarea.readOnly = true;
+    textarea.style.backgroundColor = "#eee";
+    textarea.placeholder = "";
+    textarea2.readOnly = true;
+    textarea2.style.backgroundColor = "#eee";
+    textarea2.placeholder = "";
+    cgcsselect.disabled = true;
+    bt1.disabled = true;
+    bt1.style.backgroundColor = "#eee";
   }
 }
 function shadow_wgs() {
   var ckbx = document.getElementById("cgcs2wgs_ck");
   var textarea = document.getElementById("wgsCoords");
   var textarea2 = document.getElementById("cgcsCoords");
-  var ckbk2 = document.getElementById("wgs2cgcs_ck");
+  var ckbx2 = document.getElementById("wgs2cgcs_ck");
   var cgcsselect = document.getElementById("cgcsSystem");
   var bt1 = document.getElementById("cgcs2wgs_bt");
   var bt2 = document.getElementById("wgs2cgcs_bt");
@@ -262,12 +282,23 @@ function shadow_wgs() {
     textarea2.readOnly = false;
     textarea2.placeholder = "Enter coordinates in  Easting, Northing,format";
     textarea2.style.backgroundColor = "#eef";
-    ckbk2.checked = false;
+    ckbx2.checked = false;
     cgcsselect.disabled = false;
     bt1.disabled = false;
     bt1.style.backgroundColor = "#4caf50";
     bt2.disabled = true;
     bt2.style.backgroundColor = "#eee";
+    cgcsselect.value = "NULL";
+  } else {
+    textarea.readOnly = true;
+    textarea.style.backgroundColor = "#eee";
+    textarea.placeholder = "";
+    textarea2.readOnly = true;
+    textarea2.placeholder = "";
+    textarea2.style.backgroundColor = "#eee";
+    cgcsselect.disabled = true;
+    bt1.disabled = false;
+    bt1.style.backgroundColor = "#eee";
     cgcsselect.value = "NULL";
   }
 }
@@ -282,30 +313,34 @@ function cleartext() {
 function formatinput() {
   // Get input values
   var ckbx = document.getElementById("cgcs2wgs_ck");
-  var ckbk2 = document.getElementById("wgs2cgcs_ck");
-  if (ckbx.checked == true && ckbk2.checked == false) {
+  var ckbx2 = document.getElementById("wgs2cgcs_ck");
+  var sep = document.getElementById("seperator").value;
+  var exc = document.getElementById("exchangecol");
+  if (ckbx.checked == true && ckbx2.checked == false) {
     var inputbox = "cgcsCoords";
   }
-  if (ckbx.checked == false && ckbk2.checked == true) {
+  if (ckbx.checked == false && ckbx2.checked == true) {
     var inputbox = "wgsCoords";
   }
-
   var inputextall = document
     .getElementById(inputbox)
     .value.trim()
     .split("\n")
-    .map((line) => line.trim().split(","));
-  // Define input and output coordinate systems
+    .map((line) => line.trim().split(sep));
 
   // Convert WGS-84 to CGCS2000
   var formatedtext = inputextall
     .map((coords) => {
-      var east = parseFloat(coords[0]);
-      var north = parseFloat(coords[1]);
-      if (isNaN(east) || !isFinite(east) || isNaN(north) || !isFinite(north)) {
+      var XX = parseFloat(coords[0]);
+      var YY = parseFloat(coords[1]);
+      if (isNaN(XX) || !isFinite(XX) || isNaN(YY) || !isFinite(YY)) {
         return null;
       }
-      return [east, north];
+      if (exc.checked) {
+        return [YY.toFixed(6), XX.toFixed(6)];
+      } else {
+        return [XX.toFixed(6), YY.toFixed(6)];
+      }
     })
     .filter((coords) => coords !== null)
     .map((coords) => coords.join(", "));
