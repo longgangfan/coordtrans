@@ -11,7 +11,7 @@
   <body>
     <div class="contanier">
       <h1>WGS-84 to CGCS2000 Converter</h1>
-      <form class="form-grid">
+      <div id="grid" class="grid">
         <div id="formatbox">
           <label>Choose seperator:</label>
           <select id="seperator">
@@ -25,9 +25,11 @@
           </label>
             <button type="button" id="format_bt" onclick="formatinput()">Format</button>
           </div>
-        <div id="wgs84" class="form-group">
-          <label>Enter WGS-84 coordinates:</label>
-          <textarea id="wgsCoords" rows="34" readonly></textarea>
+          <div id="wgs84label">
+          <label>WGS-84 coordinates:</label>
+          </div>
+        <div id="wgs84" class="textarea">
+          <textarea style="resize:vertical" id="wgsCoords" rows="35" readonly></textarea>
         </div>
         <div id="checkbox">
           <label>Select Your Operation:</label>
@@ -39,13 +41,13 @@
           </label>
         </div>
 
-        <div id="convert" class="convert">
+        <div id="convert">
           <button type="button" id="wgs2cgcs_bt" onclick="convert()">Convert &#8594</button>
           <button type="button" id="cgcs2wgs_bt" onclick="inconvert()">Convert &#8592</button>
           <button type="button" id="clear_bt" onclick="cleartext()">Clear All</button>
         </div>
-        <div id="cgcs2000select" class="form-group">
-          <label>Select CGCS2000 coordinate system:</label>
+        <div id="cgcs2000select">
+          <label>Select CGCS2000 CRS:</label>
           <select id="cgcsSystem">
             <option value="NULL">Please choose</option>
             <option value="EPSG:4534">3 Degree Gauss-Kruger Zone 25</option>
@@ -71,11 +73,10 @@
             <option value="EPSG:4554">3 Degree Gauss-Kruger Zone 45</option>
           </select>
         </div>
-        <div id="cgcs2000" class="form-group">
-          <label>CGCS2000 coordinates:</label>
-          <textarea id="cgcsCoords" rows="28" readonly></textarea>
-        </div>
-      </form>
+          <div id="cgcs2000" class="textarea">
+            <textarea style="resize:vertical" id="cgcsCoords" rows="35" readonly></textarea>
+          </div>
+      </div>
     </div>
   </body>
 </html>

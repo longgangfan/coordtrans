@@ -1,6 +1,6 @@
 h1 {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 50px;
 }
 .container {
@@ -10,15 +10,15 @@ h1 {
   height: 100vh;
 }
 
-.form-grid {
+.grid {
   display: grid;
-  grid-template-columns:  1fr 15% 1fr;
-  grid-template-rows: 8% 20% 20% 24% 1fr;
+  grid-template-columns: 1fr 15% 1fr;
+  grid-template-rows: 6%  30% 30% 30% 4%;
   grid-column-gap: 5%;
   grid-row-gap: 2%;
-  align-items: flex-start;
+  align-items: center;
   grid-template-areas:
-    "wgs84 . cgcs2000select"
+    "wgs84label . cgcs2000select"
     "wgs84 checkbox cgcs2000"
     "wgs84 format cgcs2000"
     "wgs84 convert cgcs2000"
@@ -27,34 +27,24 @@ h1 {
   padding-right: 5%;
 }
 
-.form-group {
-  display: flex;
+
+.textarea {
+  display:flex;
   flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.form-group select,
-.form-group input,
-.form-group textarea {
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
-  border: 1px;
+  border: 5px;
   font-size: 16px;
   background-color: #eee;
+  resize: none;
 }
-
-.convert {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 5px;
+#wgs84label {
+  grid-area: wgs84label;
+  font-weight: bold;
+}
+#cgcs2000select {
+  grid-area: cgcs2000select;
+  font-weight: bold;
 }
 #wgs84 {
   grid-area: wgs84;
@@ -62,18 +52,19 @@ h1 {
 #cgcs2000 {
   grid-area: cgcs2000;
 }
-#cgcs2000select {
-  grid-area: cgcs2000select;
-}
+
 #convert {
   grid-area: convert;
-  background-color: #eee;
+  display: flex;
+  flex-direction: column;
   align-items: stretch;
+  background-color: #eee;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border-radius: 5px;
+  border: 5px;
 }
 #checkbox {
   grid-area: checkbox;
@@ -85,9 +76,10 @@ h1 {
   align-items: stretch;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border-radius: 5px;
+  border: 5px;
 }
 #formatbox {
   grid-area: format;
@@ -101,6 +93,7 @@ h1 {
   padding-bottom: 10px;
   background-color: #eee;
   border-radius: 5px;
+  border: 5px;
 }
 button[type="button"] {
   background-color: #4caf50;
@@ -138,6 +131,6 @@ select {
   margin-left: 0.2vw;
   margin-right: 0.2vw;
   border-radius: 5px;
-  border: 2px;
+  border: 5px;
   font-size: 0.7vw;
 }
