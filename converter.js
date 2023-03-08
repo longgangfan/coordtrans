@@ -193,7 +193,7 @@ function convert() {
       cgcsselect.value = cgcsSystem;
       var cgcs = proj4.defs(cgcsSystem);
       result = proj4(wgs84, cgcs, [lng, lat]);
-      return [result[0].toFixed(6), result[1].toFixed(6), NN, NN*3];
+      return [result[0].toFixed(6), result[1].toFixed(6), NN, NN * 3];
     })
     .filter((coords) => coords !== null)
     .map((coords) => coords.join(", "));
@@ -326,9 +326,8 @@ function formatinput() {
     .getElementById(inputbox)
     .value.trim()
     .split("\n")
-    .map((line) => line.trim().split(sep));
+    .map((line) => line.trim().split(sep,2));
 
-  // Convert WGS-84 to CGCS2000
   var formatedtext = inputextall
     .map((coords) => {
       var XX = parseFloat(coords[0]);
